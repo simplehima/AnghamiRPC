@@ -1,4 +1,4 @@
-﻿using DiscordRPC;
+using DiscordRPC;
 using DiscordRPC.Logging;
 using Microsoft.Win32;
 using System.Diagnostics;
@@ -127,77 +127,90 @@ namespace AnghRPC
         static void Main(string[] args)
         {
 
-            client = new DiscordRpcClient("1059437128938954873");
-
-            //Set the logger
-            client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
-
             try
             {
 
-                var p = Process.GetProcessesByName("Anghami").First();
+                client = new DiscordRpcClient("1059437128938954873");
 
-                string storedRpcName = string.Empty;
+                //Set the logger
+                client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
 
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write("Anghami RPC ");
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Write("is now running.");
-
-
-                client.Initialize();
-
-                // SetStartup();
-
-                string rpcName;
-
-                while (true)
+                try
                 {
 
-                    rpcName = GetText(p.MainWindowHandle);
+                    var p = Process.GetProcessesByName("Anghami").First();
 
-                    if (rpcName != storedRpcName)
+                    string storedRpcName = string.Empty;
+
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.Write("Anghami RPC ");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.Write("is now running.");
+
+
+                    client.Initialize();
+
+                    // SetStartup();
+
+                    string rpcName;
+
+                    while (true)
                     {
 
-                        storedRpcName = GetText(p.MainWindowHandle);
                         rpcName = GetText(p.MainWindowHandle);
 
-                        int pFrom = rpcName.IndexOf("") + "".Length;
-                        int pTo = rpcName.LastIndexOf(" - ");
-
-                        String displaysongname = rpcName.Substring(pFrom, pTo - pFrom);
-                        String displayartist = rpcName.Substring(rpcName.LastIndexOf('-') + 1);
-
-                        client.SetPresence(new RichPresence()
+                        if (rpcName != storedRpcName)
                         {
-                            Details = displaysongname,
-                            State = "by" + displayartist,
-                            Assets = new Assets()
+
+                            storedRpcName = GetText(p.MainWindowHandle);
+                            rpcName = GetText(p.MainWindowHandle);
+
+                            int pFrom = rpcName.IndexOf("") + "".Length;
+                            int pTo = rpcName.LastIndexOf(" - ");
+
+                            String displaysongname = rpcName.Substring(pFrom, pTo - pFrom);
+                            String displayartist = rpcName.Substring(rpcName.LastIndexOf('-') + 1);
+
+                            client.SetPresence(new RichPresence()
                             {
-                                LargeImageKey = "anghami",
-                                LargeImageText = $"Playing {rpcName}.",
-                                SmallImageKey = "play",
-                            },
-                            Timestamps = Timestamps.Now
-                        });
+                                Details = displaysongname,
+                                State = "by" + displayartist,
+                                Assets = new Assets()
+                                {
+                                    LargeImageKey = "anghami",
+                                    LargeImageText = $"Playing {rpcName}.",
+                                    SmallImageKey = "play",
+                                },
+                                Timestamps = Timestamps.Now
+                            });
+
+                        }
 
                     }
 
+
+                }
+                catch (Exception ex)
+                {
+
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("Can't find Anghami, or an issue may have occured. ");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.Write("Please click any key to close this application." + Environment.NewLine);
+
+                    Console.WriteLine(ex);
+
+                    return;
+
                 }
 
-
             }
-            catch (Exception ex)
+            catch
             {
 
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write("Can't find Anghami, or an issue may have occured. ");
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Write("Please click any key to close this application." + Environment.NewLine);
-
-                Console.WriteLine(ex);
-
-                return;
+                var applicationPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                Process.Start(applicationPath);
+                Environment.Exit(Environment.ExitCode);
 
             }
 
