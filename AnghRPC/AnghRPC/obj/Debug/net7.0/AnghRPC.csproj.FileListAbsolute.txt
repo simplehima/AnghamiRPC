@@ -1,0 +1,16 @@
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\bin\Debug\net7.0\AnghRPC.exe
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\bin\Debug\net7.0\AnghRPC.deps.json
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\bin\Debug\net7.0\AnghRPC.runtimeconfig.json
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\bin\Debug\net7.0\AnghRPC.dll
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\bin\Debug\net7.0\AnghRPC.pdb
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\obj\Debug\net7.0\AnghRPC.csproj.AssemblyReference.cache
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\obj\Debug\net7.0\AnghRPC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\obj\Debug\net7.0\AnghRPC.AssemblyInfoInputs.cache
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\obj\Debug\net7.0\AnghRPC.AssemblyInfo.cs
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\obj\Debug\net7.0\AnghRPC.csproj.CoreCompileInputs.cache
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\obj\Debug\net7.0\AnghRPC.csproj.Fody.CopyLocal.cache
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\obj\Debug\net7.0\AnghRPC.dll
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\obj\Debug\net7.0\refint\AnghRPC.dll
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\obj\Debug\net7.0\AnghRPC.pdb
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\obj\Debug\net7.0\AnghRPC.genruntimeconfig.cache
+C:\Users\pronn\source\repos\AnghRPC\AnghRPC\obj\Debug\net7.0\ref\AnghRPC.dll
