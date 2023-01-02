@@ -7,4 +7,4 @@ If you encounter an issue, you can report it to the [**__issues__**](https://git
 ![image](https://user-images.githubusercontent.com/84229419/210231792-aaafecc6-7429-40c7-805f-fd0928601d4e.png)
 
 ### Compatibility
-This is compatible on **Windows, Mac Linux**. Enjoy.
+This is compatible on **Windows, Mac and Linux**. Enjoy.
