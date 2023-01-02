@@ -162,7 +162,7 @@ namespace AnghRPC
                         storedRpcName = GetText(p.MainWindowHandle);
                         rpcName = GetText(p.MainWindowHandle);
 
-                        int pFrom = rpcName.IndexOf("▶ ") + "▶ ".Length;
+                        int pFrom = rpcName.IndexOf("") + "".Length;
                         int pTo = rpcName.LastIndexOf(" - ");
 
                         String displaysongname = rpcName.Substring(pFrom, pTo - pFrom);
