@@ -16,9 +16,10 @@ AnghamiRPC is a simple application that allows you to display your current Angha
 1. Clone the repository to your local machine.
 `git clone https://github.com/simplehima/AnghamiRPC.git`
 2. Open the project in Visual Studio.
-3. In **Line 140** Change with you Client ID from Discord Portal 
-4. Build the solution to restore the NuGet packages.
-5. Run the program.
+3. In **Line 141** Change with you `Client ID` from Discord Portal 
+4. In **Line 163** and **Line 170** replace `"C:\\Path\\To\\Anghami.exe"` with the actual path to the Anghami executable on your system. 
+5. Build the solution to restore the NuGet packages.
+6. Run the program.
 
 ## Usage
 
