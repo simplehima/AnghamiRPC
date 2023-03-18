@@ -137,7 +137,7 @@ namespace AnghRPC
             {
                 try
                 {
-                    client = new DiscordRpcClient("Your Client ID"); //Change with you Client ID from Discord Portal
+                    client = new DiscordRpcClient("1059437128938954873");
 
                     //Set the logger
                     client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
@@ -159,8 +159,13 @@ namespace AnghRPC
 
                     string rpcName;
 
+                    // add a 5-second delay to the loop
+                    System.Threading.Thread.Sleep(5000);
                     while (true)
                     {
+
+                        // add a 1-second delay to the loop
+                        System.Threading.Thread.Sleep(1000);
 
                         rpcName = GetText(p.MainWindowHandle);
 
@@ -182,9 +187,9 @@ namespace AnghRPC
                                 State = "by" + displayartist,
                                 Assets = new Assets()
                                 {
-                                    LargeImageKey = "anghami", // This the anghami large logo must be uploaded Rich Presence Art Assets on discord portal and match same name
+                                    LargeImageKey = "anghami",
                                     LargeImageText = $"Playing {rpcName}.",
-                                    SmallImageKey = "play",// This the anghami small logo must be uploaded Rich Presence Art Assets on discord portal  and match same name
+                                    SmallImageKey = "play",
                                 },
                                 Timestamps = Timestamps.Now
                             });
