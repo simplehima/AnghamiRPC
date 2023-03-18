@@ -1,6 +1,8 @@
 using DiscordRPC;
 using DiscordRPC.Logging;
 using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -10,7 +12,6 @@ namespace AnghRPC
 {
     internal class Program
     {
-
         #region Long Back-end
 
         [Flags]
@@ -137,36 +138,38 @@ namespace AnghRPC
             {
                 try
                 {
-                    client = new DiscordRpcClient("1059437128938954873");
-
+                    client = new DiscordRpcClient("ClientID");
                     //Set the logger
                     client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
-
-                    var p = Process.GetProcessesByName("Anghami").First();
-
-                    string storedRpcName = string.Empty;
-
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.Write("Anghami RPC ");
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.Write("is now running.");
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.Write("Modded by Hima.");
-
                     client.Initialize();
-
-                    // SetStartup();
-
+                    string storedRpcName = string.Empty;
                     string rpcName;
-
                     // add a 5-second delay to the loop
                     System.Threading.Thread.Sleep(5000);
                     while (true)
                     {
-
                         // add a 1-second delay to the loop
                         System.Threading.Thread.Sleep(1000);
-
+                        Process[] processes = Process.GetProcessesByName("Anghami");
+                        if (processes.Length == 0)
+                        {
+                            // Anghami is not running, start it
+                            Process.Start("C:\\Path\\To\\Anghami.exe"); 
+                            continue;
+                        }
+                        Process p = processes[0];
+                        if (p.HasExited)
+                        {
+                            // Anghami was running but has now exited, restart it
+                            Process.Start("C:\\Path\\To\\Anghami.exe"); 
+                            continue;
+                        }
                         rpcName = GetText(p.MainWindowHandle);
 
                         if (rpcName != storedRpcName)
@@ -193,24 +196,17 @@ namespace AnghRPC
                                 },
                                 Timestamps = Timestamps.Now
                             });
-
                         }
-
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    Console.WriteLine(ex.Message);
                     Console.ResetColor();
-                    Console.WriteLine("Restarting the program...");
-                    Process.Start(Assembly.GetExecutingAssembly().Location);
-                    Environment.Exit(0);
                 }
             }
-
-
-
         }
+
     }
 }
