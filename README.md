@@ -30,7 +30,7 @@ AnghamiRPC is a simple application that allows you to display your current Angha
 This is compatible on **Windows, Mac and Linux**. Enjoy.
 
 ## Contributions
-Created by @Pronner
+Created by '[@Pronner]'
 
 
 ![image](https://user-images.githubusercontent.com/84229419/210231792-aaafecc6-7429-40c7-805f-fd0928601d4e.png)
