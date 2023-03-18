@@ -115,28 +115,32 @@ namespace AnghRPC
 
         private static void SetStartup()
         {
-            RegistryKey rkApp = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            rkApp.SetValue("AnghRPC", Assembly.GetExecutingAssembly().Location);
+            if (OperatingSystem.IsWindows())
+            {
+                RegistryKey? rkApp = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                rkApp?.SetValue("AnghRPC", Assembly.GetExecutingAssembly().Location);
+            }
+            else
+            {
+                Console.WriteLine("Sorry but only Windows OS is Supported ...");
+            }
 
         }
 
         #endregion
 
-        public static DiscordRpcClient client;
+        public static DiscordRpcClient? client;
 
         static void Main(string[] args)
         {
-
-            try
+            while (true)
             {
-
-                client = new DiscordRpcClient("1059437128938954873");
-
-                //Set the logger
-                client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
-
                 try
                 {
+                    client = new DiscordRpcClient("Your Client ID"); //Change with you Client ID from Discord Portal
+
+                    //Set the logger
+                    client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
 
                     var p = Process.GetProcessesByName("Anghami").First();
 
@@ -146,7 +150,8 @@ namespace AnghRPC
                     Console.Write("Anghami RPC ");
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.Write("is now running.");
-
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write("Modded by Hima.");
 
                     client.Initialize();
 
@@ -177,9 +182,9 @@ namespace AnghRPC
                                 State = "by" + displayartist,
                                 Assets = new Assets()
                                 {
-                                    LargeImageKey = "anghami",
+                                    LargeImageKey = "anghami", // This the anghami large logo must be uploaded Rich Presence Art Assets on discord portal and match same name
                                     LargeImageText = $"Playing {rpcName}.",
-                                    SmallImageKey = "play",
+                                    SmallImageKey = "play",// This the anghami small logo must be uploaded Rich Presence Art Assets on discord portal  and match same name
                                 },
                                 Timestamps = Timestamps.Now
                             });
@@ -187,32 +192,19 @@ namespace AnghRPC
                         }
 
                     }
-
-
                 }
                 catch (Exception ex)
                 {
-
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("Can't find Anghami, or an issue may have occured. ");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("Please click any key to close this application." + Environment.NewLine);
-
-                    Console.WriteLine(ex);
-
-                    return;
-
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    Console.ResetColor();
+                    Console.WriteLine("Restarting the program...");
+                    Process.Start(Assembly.GetExecutingAssembly().Location);
+                    Environment.Exit(0);
                 }
-
             }
-            catch
-            {
 
-                var applicationPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                Process.Start(applicationPath);
-                Environment.Exit(Environment.ExitCode);
 
-            }
 
         }
     }
