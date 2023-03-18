@@ -1,4 +1,4 @@
-#🎶AnghamiRPC
+## 🎶AnghamiRPC
 
 The Anghami Music App rich presence for Discord. This doesn't exist, so I decided to make it.\
 However, this may crash at certain times for no reason. ~This is less likely when you run it from Visual Studio itself~ , so I recommend that you run **Visual Studio** and use the RPC from there instead.
