@@ -94,24 +94,33 @@ namespace AnghRPC
             return result;
         }
 
-        internal static string GetText(IntPtr hwnd)
-        {
-            const uint WM_GETTEXTLENGTH = 0x000E;
-            const uint WM_GETTEXT = 0x000D;
-            int length;
-            IntPtr p;
+internal static string GetText(IntPtr hwnd)
+{
+    const uint WM_GETTEXTLENGTH = 0x000E;
+    const uint WM_GETTEXT = 0x000D;
+    const int DISCORD_RPC_LIMIT = 128;
+    int length;
+    IntPtr p;
 
-            var result = SendMessageTimeout(hwnd, WM_GETTEXTLENGTH, 0, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 5, out length);
+    var result = SendMessageTimeout(hwnd, WM_GETTEXTLENGTH, 0, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 5, out length);
 
-            if (result != 1 || length <= 0)
-                return string.Empty;
+    if (result != 1 || length <= 0)
+    {
+        Console.WriteLine("Couldn't read song name from window, returning an empty string.");
+        return string.Empty;
+    }
 
-            var sb = new StringBuilder(length + 1);
+    if (length > DISCORD_RPC_LIMIT)
+    {
+        length = DISCORD_RPC_LIMIT;
+    }
 
-            return SendMessageTimeoutText(hwnd, WM_GETTEXT, sb.Capacity, sb, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 5, out p) != 0 ?
-                    sb.ToString() :
-                    string.Empty;
-        }
+    var sb = new StringBuilder(length + 1);
+
+    return SendMessageTimeoutText(hwnd, WM_GETTEXT, sb.Capacity, sb, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 5, out p) != 0 ?
+            sb.ToString() :
+            string.Empty;
+}
 
 
         private static void SetStartup()
@@ -144,9 +153,12 @@ namespace AnghRPC
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.Write("Anghami RPC ");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("is now running.");
+                    Console.WriteLine("is now running.");
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write("Modded by Hima.");
+                    Console.WriteLine("Modded By @simplehima");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Version 2.3.0");
+
                     client.Initialize();
                     string storedRpcName = string.Empty;
                     string rpcName;
