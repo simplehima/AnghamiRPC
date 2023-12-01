@@ -209,6 +209,7 @@ internal static string GetText(IntPtr hwnd)
                                 Timestamps = Timestamps.Now
                             });
                         }
+                        Thread.Sleep(500);
                     }
                 }
                 catch (Exception ex)
