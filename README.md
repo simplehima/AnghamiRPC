@@ -36,7 +36,7 @@ Created by '[@Pronner]'
 
 ![image](https://user-images.githubusercontent.com/84229419/210231792-aaafecc6-7429-40c7-805f-fd0928601d4e.png)
 
-If you encounter an issue, you can report it to the [**__issues__**](https://github.com/Pronner/AnghamiRPC/issues) page, and I may or may not fix it.
+If you encounter an issue, you can report it to the [**__issues__**](https://github.com/simplehima/AnghamiRPC/issues) page, and I may or may not fix it.
 
 
 ## License
