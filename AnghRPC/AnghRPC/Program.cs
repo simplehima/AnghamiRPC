@@ -1,6 +1,8 @@
 using DiscordRPC;
 using DiscordRPC.Logging;
 using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -11,7 +13,6 @@ namespace AnghRPC
 {
     internal class Program
     {
-
         #region Long Back-end
 
         [Flags]
@@ -94,70 +95,94 @@ namespace AnghRPC
             return result;
         }
 
-        internal static string GetText(IntPtr hwnd)
-        {
-            const uint WM_GETTEXTLENGTH = 0x000E;
-            const uint WM_GETTEXT = 0x000D;
-            int length;
-            IntPtr p;
+internal static string GetText(IntPtr hwnd)
+{
+    const uint WM_GETTEXTLENGTH = 0x000E;
+    const uint WM_GETTEXT = 0x000D;
+    const int DISCORD_RPC_LIMIT = 128;
+    int length;
+    IntPtr p;
 
-            var result = SendMessageTimeout(hwnd, WM_GETTEXTLENGTH, 0, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 5, out length);
+    var result = SendMessageTimeout(hwnd, WM_GETTEXTLENGTH, 0, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 5, out length);
 
-            if (result != 1 || length <= 0)
-                return string.Empty;
+    if (result != 1 || length <= 0)
+    {
+        Console.WriteLine("Couldn't read song name from window, returning an empty string.");
+        return string.Empty;
+    }
 
-            var sb = new StringBuilder(length + 1);
+    if (length > DISCORD_RPC_LIMIT)
+    {
+        length = DISCORD_RPC_LIMIT;
+    }
 
-            return SendMessageTimeoutText(hwnd, WM_GETTEXT, sb.Capacity, sb, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 5, out p) != 0 ?
-                    sb.ToString() :
-                    string.Empty;
-        }
+    var sb = new StringBuilder(length + 1);
+
+    return SendMessageTimeoutText(hwnd, WM_GETTEXT, sb.Capacity, sb, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 5, out p) != 0 ?
+            sb.ToString() :
+            string.Empty;
+}
 
 
         private static void SetStartup()
         {
-            RegistryKey rkApp = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            rkApp.SetValue("AnghRPC", Assembly.GetExecutingAssembly().Location);
+            if (OperatingSystem.IsWindows())
+            {
+                RegistryKey? rkApp = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                rkApp?.SetValue("AnghRPC", Assembly.GetExecutingAssembly().Location);
+            }
+            else
+            {
+                Console.WriteLine("Sorry but only Windows OS is Supported ...");
+            }
 
         }
 
         #endregion
 
-        public static DiscordRpcClient client;
+        public static DiscordRpcClient? client;
 
         static void Main(string[] args)
         {
-
-            try
+            while (true)
             {
-
-                client = new DiscordRpcClient("1059437128938954873");
-
-                //Set the logger
-                client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
-
                 try
                 {
-
-                    var p = Process.GetProcessesByName("Anghami").First();
-
-                    string storedRpcName = string.Empty;
-
+                    client = new DiscordRpcClient("ClientID");
+                    //Set the logger
+                    client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.Write("Anghami RPC ");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("is now running.");
-
+                    Console.WriteLine("is now running.");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Modded By @simplehima");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Version 2.3.0");
 
                     client.Initialize();
-
-                    // SetStartup();
-
+                    string storedRpcName = string.Empty;
                     string rpcName;
-
+                    // add a 5-second delay to the loop
+                    System.Threading.Thread.Sleep(5000);
                     while (true)
                     {
-
+                        // add a 1-second delay to the loop
+                        System.Threading.Thread.Sleep(1000);
+                        Process[] processes = Process.GetProcessesByName("Anghami");
+                        if (processes.Length == 0)
+                        {
+                            // Anghami is not running, start it
+                            Process.Start("C:\\Path\\To\\Anghami.exe"); 
+                            continue;
+                        }
+                        Process p = processes[0];
+                        if (p.HasExited)
+                        {
+                            // Anghami was running but has now exited, restart it
+                            Process.Start("C:\\Path\\To\\Anghami.exe"); 
+                            continue;
+                        }
                         rpcName = GetText(p.MainWindowHandle);
 
                         if (rpcName != storedRpcName)
@@ -184,39 +209,23 @@ namespace AnghRPC
                                 },
                                 Timestamps = Timestamps.Now
                             });
-
                         }
+
+
 
                         Thread.Sleep(500);
 
+
                     }
-
-
                 }
                 catch (Exception ex)
                 {
-
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("Can't find Anghami, or an issue may have occured. ");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("Please click any key to close this application." + Environment.NewLine);
-
-                    Console.WriteLine(ex);
-
-                    return;
-
+                    Console.WriteLine(ex.Message);
+                    Console.ResetColor();
                 }
-
             }
-            catch
-            {
-
-                var applicationPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                Process.Start(applicationPath);
-                Environment.Exit(Environment.ExitCode);
-
-            }
-
         }
+
     }
 }
