@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnghamiRPC", "AnghamiRPC\AnghamiRPC.csproj", "{2ED28CCD-E971-4DEE-9FB0-C385B9913B91}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnghRPC", "AnghRPC\AnghRPC.csproj", "{346998B4-C23A-4C66-99BD-C6E262E4B951}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2ED28CCD-E971-4DEE-9FB0-C385B9913B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ED28CCD-E971-4DEE-9FB0-C385B9913B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ED28CCD-E971-4DEE-9FB0-C385B9913B91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{346998B4-C23A-4C66-99BD-C6E262E4B951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{346998B4-C23A-4C66-99BD-C6E262E4B951}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{346998B4-C23A-4C66-99BD-C6E262E4B951}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{346998B4-C23A-4C66-99BD-C6E262E4B951}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
