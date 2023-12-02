@@ -98,13 +98,13 @@ namespace AnghamiRPC
             else
             {
                 // Display an error message if the client ID is not valid
-                MessageBox.Show("Invalid Discord client ID. Please enter a valid 18-digit numerical ID.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Invalid Discord client ID. Please enter a valid 19-digit numerical ID.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private bool IsValidDiscordClientId(string clientId)
         {
             // Check if the client ID is 18 characters long and consists of only numerical digits
-            return clientId.Length == 18 && long.TryParse(clientId, out _);
+            return clientId.Length == 19 && long.TryParse(clientId, out _);
         }
 
 
