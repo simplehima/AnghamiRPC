@@ -162,7 +162,7 @@ namespace AnghamiRPC
                         // Notify UI about the update
                         updateUI?.Invoke("Anghami RPC is now running.");
                     updateUI?.Invoke("Built By @simplehima.");
-                    updateUI?.Invoke("Version 3.1.0");
+                    updateUI?.Invoke("Version 3.2.2");
                     //Set the logger
                     //client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
                     //Console.ForegroundColor = ConsoleColor.Magenta;

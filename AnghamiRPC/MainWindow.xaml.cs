@@ -68,10 +68,19 @@ namespace AnghamiRPC
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            if (rpcThread == null || !rpcThread.IsAlive)
+            // Get the client ID from the text box
+            clientId = ClientIdTextBox.Text.Trim();
+
+            // Validate the client ID
+            if (IsValidDiscordClientId(clientId))
             {
-                // Get the client ID from the text box
-                clientId = ClientIdTextBox.Text;
+                // Check if the Anghami path is present
+                if (string.IsNullOrWhiteSpace(anghamiPath))
+                {
+                    // Display an error message and prompt the user to select the Anghami path
+                    MessageBox.Show("Anghami path is not selected. Please click the Browse button and select the Anghami executable.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
 
                 // Save the client ID to settings
                 Properties.Settings.Default.ClientId = clientId;
@@ -86,6 +95,16 @@ namespace AnghamiRPC
                 rpcThread = new Thread(() => Program.Start(clientId, UpdateUI, anghamiPath));
                 rpcThread.Start();
             }
+            else
+            {
+                // Display an error message if the client ID is not valid
+                MessageBox.Show("Invalid Discord client ID. Please enter a valid 18-digit numerical ID.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private bool IsValidDiscordClientId(string clientId)
+        {
+            // Check if the client ID is 18 characters long and consists of only numerical digits
+            return clientId.Length == 18 && long.TryParse(clientId, out _);
         }
 
 
