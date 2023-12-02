@@ -14,23 +14,21 @@
         Background="Transparent"
         >
     <Grid>
-        <Border Background="#6e4276"
-                BorderBrush="#6e4276"
+        <Border Background="#2c2f33"
+                BorderBrush="#2c2f33"
                 BorderThickness="5"
                 CornerRadius="8,8,8,8"/>
 
         <Grid Margin="20" 
-              Background="#6e4276" 
+              Background="#2c2f33" 
               RenderTransformOrigin="0,0"
               >
 
             <Grid>
 
             </Grid>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="284,465,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.303,0.551"/>
-            <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="87,277,0,0" VerticalAlignment="Top"/>
-            <TextBlock HorizontalAlignment="Left" Margin="58,140,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Center" Margin="0,138,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            <Image Source="Assets/Anghami_logo.png" Margin="0,5,0,641"/>
+            <TextBlock HorizontalAlignment="Left" Margin="251,86,0,0" TextWrapping="Wrap" Text="Discord RPC " VerticalAlignment="Top" FontSize="24" FontWeight="Bold" FontFamily="Cooper Black" Foreground="#FF5872B1"/>
 
         </Grid>
     </Grid>
