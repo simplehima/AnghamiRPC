@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading;
 using System.Windows;
+using System.Windows.Input;
 using Microsoft.Win32;
 
 namespace AnghamiRPC
@@ -10,10 +11,51 @@ namespace AnghamiRPC
     {
         private Thread? rpcThread;
         private string? anghamiPath;
+        private bool isDragging = false;
+        private Point startPoint;
 
         public MainWindow()
         {
             InitializeComponent();
+            InitializeComponent();
+            MouseLeftButtonDown += DragWindow;
+            MouseMove += Window_MouseMove;
+            MouseLeftButtonUp += Window_MouseUp;
+        }
+
+        private void DragWindow(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                isDragging = true;
+                startPoint = e.GetPosition(this);
+            }
+        }
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging && e.LeftButton == MouseButtonState.Pressed)
+            {
+                Point currentPosition = e.GetPosition(this);
+                this.Left = currentPosition.X - startPoint.X + this.Left;
+                this.Top = currentPosition.Y - startPoint.Y + this.Top;
+            }
+        }
+
+        private void Window_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                isDragging = false;
+            }
+        }
+
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
