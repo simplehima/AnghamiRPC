@@ -13,6 +13,7 @@ namespace AnghamiRPC
 {
     internal class Program
     {
+        private static Action<string>? updateUI;
         #region Long Back-end
 
         [Flags]
@@ -65,6 +66,7 @@ namespace AnghamiRPC
 
             if (list == null)
                 throw new InvalidCastException("Invalid cast of GCHandle as List<IntPtr>");
+            updateUI?.Invoke("Invalid cast of GCHandle as List<IntPtr>");
 
             // Adds the handle to the list.
             list.Add(handle);
@@ -107,7 +109,8 @@ namespace AnghamiRPC
 
             if (result != 1 || length <= 0)
             {
-                Console.WriteLine("Couldn't read song name from window, returning an empty string.");
+                //Console.WriteLine("Couldn't read song name from window, returning an empty string.");
+                updateUI?.Invoke("Couldn't read song name from window, returning an empty string.");
                 return string.Empty;
             }
 
@@ -133,19 +136,20 @@ namespace AnghamiRPC
             }
             else
             {
-                Console.WriteLine("Sorry but only Windows OS is Supported ...");
+                //Console.WriteLine("Sorry but only Windows OS is Supported ...");
+                updateUI?.Invoke("Sorry but only Windows OS is Supported ...");
             }
 
         }
 
         #endregion
-        private static bool isRunning = true;
+        private static bool stopScript = false;
 
         public static DiscordRpcClient? client;
 
         public static void Start(string clientId, Action<string> updateUI, string anghamiPath)
         {
-            while (isRunning)
+            while (!stopScript)
             {
                 try
                 {
@@ -176,7 +180,7 @@ namespace AnghamiRPC
                     string rpcName;
                     // add a 5-second delay to the loop
                     System.Threading.Thread.Sleep(5000);
-                    while (true)
+                    while (!stopScript)
                     {
                         // add a 1-second delay to the loop
                         System.Threading.Thread.Sleep(1000);
@@ -185,6 +189,7 @@ namespace AnghamiRPC
                         {
                             // Anghami is not running, start it
                             Process.Start(anghamiPath);
+                            updateUI?.Invoke("Anghami is not running, Will Auto Start now!");
                             continue;
                         }
                         Process p = processes[0];
@@ -192,7 +197,13 @@ namespace AnghamiRPC
                         {
                             // Anghami was running but has now exited, restart it
                             Process.Start(anghamiPath);
+                            updateUI?.Invoke("Anghami was running but has now exited, restarting it");
                             continue;
+                        }
+                        // Check if the stopScript flag is set
+                        if (stopScript)
+                        {
+                            return;
                         }
                         rpcName = GetText(p.MainWindowHandle);
 
@@ -245,7 +256,11 @@ namespace AnghamiRPC
 
         }
 
-
+        // Add a method to stop the script
+        public static void StopScript()
+        {
+            stopScript = true;
+        }
 
     }
 }

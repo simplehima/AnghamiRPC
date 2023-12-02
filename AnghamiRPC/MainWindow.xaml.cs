@@ -39,6 +39,8 @@ namespace AnghamiRPC
         }
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            // Stop the script before closing the window
+            Program.StopScript();
             Close();
         }
         private void Window_MouseMove(object sender, MouseEventArgs e)
