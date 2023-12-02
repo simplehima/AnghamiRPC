@@ -143,9 +143,9 @@ namespace AnghamiRPC
 
         public static DiscordRpcClient? client;
 
-        public static void Start(string clientId, Action<string> updateUI)
+        public static void Start(string clientId, Action<string> updateUI, string anghamiPath)
         {
-            while (true)
+            while (isRunning)
             {
                 try
                 {
@@ -179,14 +179,14 @@ namespace AnghamiRPC
                         if (processes.Length == 0)
                         {
                             // Anghami is not running, start it
-                            Process.Start("C:\\Path\\To\\Anghami.exe");
+                            Process.Start(anghamiPath);
                             continue;
                         }
                         Process p = processes[0];
                         if (p.HasExited)
                         {
                             // Anghami was running but has now exited, restart it
-                            Process.Start("C:\\Path\\To\\Anghami.exe");
+                            Process.Start(anghamiPath);
                             continue;
                         }
                         rpcName = GetText(p.MainWindowHandle);

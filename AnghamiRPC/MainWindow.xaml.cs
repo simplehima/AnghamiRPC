@@ -1,12 +1,15 @@
 ﻿using System;
+using System.IO;
 using System.Threading;
 using System.Windows;
+using Microsoft.Win32;
 
 namespace AnghamiRPC
 {
     public partial class MainWindow : Window
     {
         private Thread? rpcThread;
+        private string? anghamiPath;
 
         public MainWindow()
         {
@@ -16,7 +19,7 @@ namespace AnghamiRPC
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             string clientId = ClientIdTextBox.Text;
-            rpcThread = new Thread(() => Program.Start(clientId, UpdateUI));
+            rpcThread = new Thread(() => Program.Start(clientId, UpdateUI, anghamiPath));
             rpcThread.Start();
         }
 
@@ -25,22 +28,28 @@ namespace AnghamiRPC
             Program.Stop();
         }
 
+        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Anghami Executable|Anghami.exe|All Files|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                anghamiPath = openFileDialog.FileName;
+            }
+        }
+
         private void UpdateUI(string message)
         {
-            // Use this method to update UI elements from the background thread
             Dispatcher.Invoke(() =>
             {
                 ConsoleLogTextBox.Text += $"{message}\n";
             });
         }
 
-        // Ensure to stop the background thread when the application is closing
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             base.OnClosing(e);
             Program.Stop();
         }
-
-
     }
 }
