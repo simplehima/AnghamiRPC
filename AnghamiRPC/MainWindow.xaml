@@ -1,0 +1,70 @@
+﻿<Window x:Class="AnghamiRPC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnghamiRPC"
+        mc:Ignorable="d"
+        Title="Marketing Intelligence" 
+        Height="800" 
+        Width="450"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        >
+    <Grid>
+        <Border Background="#2c2f33"
+                BorderBrush="#2c2f33"
+                BorderThickness="10"
+                CornerRadius="10,10,10,10"/>
+        <Ellipse Name="CloseButton" Fill="Red" Grid.Row="0" Height="15" Width="15" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1" Margin="0,10,15,0" ToolTip="Close" Cursor="Hand" MouseLeftButtonDown="CloseButton_Click">
+            <Ellipse.Style>
+                <Style TargetType="Ellipse">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" Value="DarkRed" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Ellipse.Style>
+        </Ellipse>
+        <Ellipse Name="MinimizeButton" Grid.Row="0" Height="15" Width="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,36,0" Fill="Yellow" MouseLeftButtonDown="MinimizeButton_Click" ToolTip="Minimize" Cursor="Hand">
+            <Ellipse.Style>
+                <Style TargetType="Ellipse">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" Value="DarkGoldenrod" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Ellipse.Style>
+        </Ellipse>
+        <Grid Margin="20,30,20,20" 
+              Background="#2c2f33" 
+              RenderTransformOrigin="0,0"
+              >
+
+
+            <Grid Margin="0,162,0,284">
+                <StackPanel Margin="10,10,10,-208">
+                    <Label Content="Client ID:" FontFamily="Cooper Black" Foreground="White" FontSize="22" Width="120"/>
+                    <TextBox x:Name="ClientIdTextBox" Width="200" Margin="0,0,0,5" FontFamily="Cooper Black"/>
+                    <Label Content="Anghami App:" FontFamily="Cooper Black" Foreground="White" FontSize="22" Width="173"/>
+                    <Button Content="Browse" Click="BrowseButton_Click"  Style="{StaticResource GradientButtonStyle}" Width="100" Margin="0,0,0,5" FontFamily="Cooper Black"/>
+                    <TextBox x:Name="ConsoleLogTextBox" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Height="295" Background="Black" Foreground="#FF00FB1B" FontSize="18" FontFamily="Cooper Black" AllowDrop="False" IsReadOnly="True" Width="382"/>
+                    <StackPanel HorizontalAlignment="Center"
+                                Orientation="Horizontal" Margin="0,20,0,0">
+                        <Button Content="Start" Click="StartButton_Click"  Style="{StaticResource GradientButtonStyle}" Width="100" Margin="0,0,5,5" FontFamily="Cooper Black"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+            </Grid>
+
+            <Image Source="Assets/Anghami_logo.png" Margin="0,14,0,632"/>
+            <TextBlock HorizontalAlignment="Left" Margin="251,86,0,0" TextWrapping="Wrap" Text="Discord RPC " VerticalAlignment="Top" FontSize="24" FontWeight="Bold" FontFamily="Cooper Black" Foreground="#FF5872B1"/>
+
+        </Grid>
+    </Grid>
+</Window>
