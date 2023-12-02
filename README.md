@@ -91,8 +91,8 @@ Check out the [Releases](https://github.com/simplehima/AnghamiRPC/releases) page
 
 ## Contributions
 
-Created By '[@Pronner]'
-GUI and Patches By '[@simplehima]'
+- Created By '[@Pronner]'
+- GUI and Patches By '[@simplehima]'
 
 ### Troubleshooting
 
