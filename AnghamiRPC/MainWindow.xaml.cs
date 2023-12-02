@@ -4,6 +4,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
+using AnghamiRPC.Properties;
 
 namespace AnghamiRPC
 {
@@ -13,14 +14,19 @@ namespace AnghamiRPC
         private string? anghamiPath;
         private bool isDragging = false;
         private Point startPoint;
-
+        private string? clientId;
         public MainWindow()
         {
             InitializeComponent();
-            InitializeComponent();
+
             MouseLeftButtonDown += DragWindow;
             MouseMove += Window_MouseMove;
             MouseLeftButtonUp += Window_MouseUp;
+
+            // Load settings on window initialization
+            clientId = Properties.Settings.Default.ClientId;
+            ClientIdTextBox.Text = Properties.Settings.Default.ClientId;
+            anghamiPath = Properties.Settings.Default.AnghamiPath;
         }
 
         private void DragWindow(object sender, MouseButtonEventArgs e)
@@ -60,15 +66,27 @@ namespace AnghamiRPC
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            string clientId = ClientIdTextBox.Text;
-            rpcThread = new Thread(() => Program.Start(clientId, UpdateUI, anghamiPath));
-            rpcThread.Start();
+            if (rpcThread == null || !rpcThread.IsAlive)
+            {
+                // Get the client ID from the text box
+                clientId = ClientIdTextBox.Text;
+
+                // Save the client ID to settings
+                Properties.Settings.Default.ClientId = clientId;
+
+                // Save the Anghami path to settings
+                Properties.Settings.Default.AnghamiPath = anghamiPath;
+
+                // Save the settings
+                Properties.Settings.Default.Save();
+
+                // Now you can use clientId and anghamiPath in your thread or wherever you need them
+                rpcThread = new Thread(() => Program.Start(clientId, UpdateUI, anghamiPath));
+                rpcThread.Start();
+            }
         }
 
-        private void StopButton_Click(object sender, RoutedEventArgs e)
-        {
-            Program.Stop();
-        }
+
 
         private void BrowseButton_Click(object sender, RoutedEventArgs e)
         {
@@ -79,7 +97,6 @@ namespace AnghamiRPC
                 anghamiPath = openFileDialog.FileName;
             }
         }
-
         private void UpdateUI(string message)
         {
             Dispatcher.Invoke(() =>
@@ -91,7 +108,7 @@ namespace AnghamiRPC
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             base.OnClosing(e);
-            Program.Stop();
+           
         }
     }
 }

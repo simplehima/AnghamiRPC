@@ -149,10 +149,14 @@ namespace AnghamiRPC
             {
                 try
                 {
-                    client = new DiscordRpcClient(clientId);
+                    // Check if the client is null or disposed
+                    if (client == null || client.IsDisposed)
+                    {
+                        // Create a new instance of DiscordRpcClient
+                        client = new DiscordRpcClient(clientId);
 
-                    // Notify UI about the update
-                    updateUI?.Invoke("Anghami RPC is now running.");
+                        // Notify UI about the update
+                        updateUI?.Invoke("Anghami RPC is now running.");
                     updateUI?.Invoke("Built By @simplehima.");
                     updateUI?.Invoke("Version 3.1.0");
                     //Set the logger
@@ -167,6 +171,7 @@ namespace AnghamiRPC
                     //Console.WriteLine("Version 2.3.0");
 
                     client.Initialize();
+                    }
                     string storedRpcName = string.Empty;
                     string rpcName;
                     // add a 5-second delay to the loop
@@ -239,11 +244,8 @@ namespace AnghamiRPC
             }
 
         }
-        public static void Stop()
-        {
-            isRunning = false;
-            client?.Dispose(); // Dispose the DiscordRpcClient
-        }
+
+
 
     }
 }
