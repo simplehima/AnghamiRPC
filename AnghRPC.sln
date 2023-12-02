@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnghRPC", "AnghRPC\AnghRPC.csproj", "{5BF1E0A6-7110-4B2A-8CE7-054D16349748}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnghamiRPC", "AnghamiRPC\AnghamiRPC.csproj", "{2ED28CCD-E971-4DEE-9FB0-C385B9913B91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnghamiRPC", "AnghamiRPC\AnghamiRPC.csproj", "{2ED28CCD-E971-4DEE-9FB0-C385B9913B91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5BF1E0A6-7110-4B2A-8CE7-054D16349748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BF1E0A6-7110-4B2A-8CE7-054D16349748}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BF1E0A6-7110-4B2A-8CE7-054D16349748}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BF1E0A6-7110-4B2A-8CE7-054D16349748}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2ED28CCD-E971-4DEE-9FB0-C385B9913B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2ED28CCD-E971-4DEE-9FB0-C385B9913B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ED28CCD-E971-4DEE-9FB0-C385B9913B91}.Release|Any CPU.ActiveCfg = Release|Any CPU

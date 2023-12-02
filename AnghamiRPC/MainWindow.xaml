@@ -23,10 +23,15 @@
               Background="#2c2f33" 
               RenderTransformOrigin="0,0"
               >
-
-            <Grid>
-
+            <Grid Margin="0,162,0,284">
+                <StackPanel Margin="10">
+                    <Label Content="Client ID:" FontFamily="Cooper Black" Foreground="White" FontSize="22" Width="120"/>
+                    <TextBox x:Name="ClientIdTextBox" Width="200" Margin="0,0,0,5" FontFamily="Cooper Black"/>
+                    <Button Content="Start" Click="StartButton_Click" Width="100" Margin="0,0,0,5"/>
+                    <TextBox x:Name="ConsoleLogTextBox" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Height="200" Background="Black" Foreground="#FF00FB1B" FontSize="18" FontFamily="Cooper Black"/>
+                </StackPanel>
             </Grid>
+
             <Image Source="Assets/Anghami_logo.png" Margin="0,5,0,641"/>
             <TextBlock HorizontalAlignment="Left" Margin="251,86,0,0" TextWrapping="Wrap" Text="Discord RPC " VerticalAlignment="Top" FontSize="24" FontWeight="Bold" FontFamily="Cooper Black" Foreground="#FF5872B1"/>
 
