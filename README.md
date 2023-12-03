@@ -6,9 +6,11 @@ AnghamiRPC is a simple application that allows you to integrate Anghami music in
 
 - Display the currently playing Anghami song on your Discord profile.
 - Automatically updates your Discord status when you play different songs on Anghami.
-  ![image](https://github.com/simplehima/AnghamiRPC/assets/54166348/89b9be96-ba58-4e1c-807e-1b2f5835ed03)
 
-![image](https://user-images.githubusercontent.com/84229419/210231792-aaafecc6-7429-40c7-805f-fd0928601d4e.png)
+![image](https://github.com/voidZiAD/AnghamiRPC/assets/84229419/0a565c12-0396-4380-ae25-b2348b96a3fd)
+
+![image](https://github.com/voidZiAD/AnghamiRPC/assets/84229419/db838260-b750-46c6-a95d-5b7588050078)
+
 
 ## Getting Started RPC-GUI
 
@@ -27,7 +29,7 @@ AnghamiRPC is a simple application that allows you to integrate Anghami music in
 1. Clone the repository to your local machine.
 
    ```bash
-   git clone https://github.com/simplehima/AnghamiRPC.git
+   git clone https://github.com/voidZiAD/AnghamiRPC.git
    ```
 
 2. Build the application using the .NET CLI.
@@ -55,25 +57,18 @@ AnghamiRPC is a simple application that allows you to integrate Anghami music in
 
 1. Launch the AnghamiRPC application.
 2. Enter your Discord Client ID in the provided textbox.
-3. Click the "Browse" button to select the Anghami executable file (Anghami.exe).
-4. Click the "Start" button to begin integrating Anghami with Discord.
-5. Your Discord status will now reflect the currently playing Anghami song.
-
-### Configuration
-
-- You can change your Discord Client ID and Anghami executable path by modifying the settings in the AnghamiRPC application.
+3. Click "Login".
+4. Your Discord status will now reflect the currently playing Anghami song.
 
 ## Getting Started RPC-Script
 
 ### Installation Script
 
 1. Clone the repository to your local machine.
-   `git clone https://github.com/simplehima/AnghamiRPC.git`
+   `git clone https://github.com/voidZiAD/AnghamiRPC.git`
 2. Open the project in Visual Studio.
-3. In **Line 141** Change with you `Client ID` from Discord Portal
-4. In **Line 163** and **Line 170** replace `"C:\\Path\\To\\Anghami.exe"` with the actual path to the Anghami executable on your system.
-5. Build the solution to restore the NuGet packages.
-6. Run the program.
+3. Build the solution to restore the NuGet packages.
+4. Run the program.
 
 ### Script Usage
 
@@ -83,27 +78,29 @@ AnghamiRPC is a simple application that allows you to integrate Anghami music in
 
 ### Compatibility
 
-This is compatible on **Windows, Mac and Linux**. Enjoy.
+Versions after Console are only compatible on Windows & Linux (Can be run on Linux using Wine App), Versions before GUI Update are compatible on Windows & Mac & Linux.
 
 ## Releases
 
-Check out the [Releases](https://github.com/simplehima/AnghamiRPC/releases) page for pre-built executables. Download the latest release ZIP file, extract, and run `AnghamiRPC.exe`.
+Check out the [Releases](https://github.com/voidZiAD/AnghamiRPC/releases) page for pre-built executables. Download the latest release ZIP file, extract, and run `AnghamiRPC.exe`.
 
 ## Contributions
 
-Created By [@Pronner](https://github.com/voidZiAD/)
+Created By [@ZiAD](https://github.com/voidZiAD/)
 
-GUI and Patches By [@simplehima](https://github.com/simplehima/)
+Previous GUI and Patches By [@simplehima](https://github.com/simplehima/)
+
+New GUI by [@ZiAD](https://github.com/voidZiAD/)
 
 ### Troubleshooting
 
 If you encounter any issues or errors, please check the following:
 
 - Ensure that your Discord Client ID is correct.
-- Verify that the selected Anghami executable path is accurate.
+- Verify that Anghami is open and installed on your PC.
 - Check for any error messages displayed in the AnghamiRPC application.
 
-If you encounter an issue, you can report it to the [\***\*issues\*\***](https://github.com/simplehima/AnghamiRPC/issues) page, and I may or may not fix it.
+If you encounter an issue, you can report it to the **[issues](https://github.com/simplehima/AnghamiRPC/issues)** page, and I may or may not fix it.
 
 ## License
 
