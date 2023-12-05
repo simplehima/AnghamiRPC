@@ -2,7 +2,37 @@
 
 AnghamiRPC is a simple application that allows you to integrate Anghami music information with Discord Rich Presence.
 
-## Features
+
+## OLD GUI Features
+
+- Display the currently playing Anghami song on your Discord profile.
+- Automatically updates your Discord status when you play different songs on Anghami.
+  ![image](https://github.com/simplehima/AnghamiRPC/assets/54166348/89b9be96-ba58-4e1c-807e-1b2f5835ed03)
+
+![image](https://user-images.githubusercontent.com/84229419/210231792-aaafecc6-7429-40c7-805f-fd0928601d4e.png)
+
+## Getting Started OLD RPC-GUI
+
+### Requirements
+
+- Windows operating system
+- Anghami desktop app
+- Discord account
+
+### Prerequisites
+
+- **.NET Core Runtime**: Ensure that you have the .NET Core runtime installed on your machine. You can download it from [https://dotnet.microsoft.com/download](https://dotnet.microsoft.com/download).
+
+#### OLD GUI: Download Release (Windows Only)
+
+1. Go to the [Releases](https://github.com/simplehima/AnghamiRPC/releases) page.
+2. Download the latest release ZIP file.
+3. Extract the contents.
+4. Run the `AnghamiRPC.exe` executable.
+
+
+
+## New GUI Source Features
 
 - Display the currently playing Anghami song on your Discord profile.
 - Automatically updates your Discord status when you play different songs on Anghami.
