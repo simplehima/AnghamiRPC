@@ -78,7 +78,7 @@ AnghamiRPC is a simple application that allows you to integrate Anghami music in
 
 #### Option 2 GUI: Download Release (Windows Only)
 
-1. Go to the [Releases](https://github.com/yourusername/AnghamiRPC/releases) page.
+1. Go to the [Releases](https://github.com/voidZiAD/AnghamiRPC/releases) page.
 2. Download the latest release ZIP file.
 3. Extract the contents.
 4. Run the `AnghamiRPC.exe` executable.
