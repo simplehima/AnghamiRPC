@@ -1,9 +1,8 @@
 # AnghamiRPC
-
 AnghamiRPC is a simple application that allows you to integrate Anghami music information with Discord Rich Presence.
 
 
-## GUI Features
+## OLD GUI Features
 
 - Display the currently playing Anghami song on your Discord profile.
 - Automatically updates your Discord status when you play different songs on Anghami.
@@ -11,7 +10,7 @@ AnghamiRPC is a simple application that allows you to integrate Anghami music in
 
 ![image](https://user-images.githubusercontent.com/84229419/210231792-aaafecc6-7429-40c7-805f-fd0928601d4e.png)
 
-## Getting Started RPC-GUI
+## Getting Started OLD RPC-GUI
 
 ### Requirements
 
@@ -23,44 +22,106 @@ AnghamiRPC is a simple application that allows you to integrate Anghami music in
 
 - **.NET Core Runtime**: Ensure that you have the .NET Core runtime installed on your machine. You can download it from [https://dotnet.microsoft.com/download](https://dotnet.microsoft.com/download).
 
-#### GUI: Download Release (Windows Only)
+#### OLD GUI: Download Release (Windows Only)
 
 1. Go to the [Releases](https://github.com/simplehima/AnghamiRPC/releases) page.
 2. Download the latest release ZIP file.
 3. Extract the contents.
 4. Run the `AnghamiRPC.exe` executable.
 
+
+
+## New GUI Source Features
+
+- Display the currently playing Anghami song on your Discord profile.
+- Automatically updates your Discord status when you play different songs on Anghami.
+
+![image](https://github.com/simplehima/AnghamiRPC/assets/54166348/60545ba9-3ac9-4184-a09a-80ab5befda0c)
+
+![image](https://github.com/simplehima/AnghamiRPC/assets/54166348/7126cf50-e77f-4d67-a42d-a3e07bcc70a2)
+
+
+
+## Getting Started RPC-GUI
+
+### Requirements
+- Windows operating system
+- Anghami desktop app
+- Discord account
+### Prerequisites
+
+- **.NET Core Runtime**: Ensure that you have the .NET Core runtime installed on your machine. You can download it from [https://dotnet.microsoft.com/download](https://dotnet.microsoft.com/download).
+
+#### Option 1 GUI: Build from Source
+
+1. Clone the repository to your local machine.
+
+   ```bash
+   git clone https://github.com/voidZiAD/AnghamiRPC.git
+   ```
+
+2. Build the application using the .NET CLI.
+
+   ```bash
+   cd AnghamiRPC
+   dotnet build
+   ```
+
+3. Run the application.
+
+   ```bash
+   dotnet run
+
+   ```
+
+#### Option 2 GUI: Download Release (Windows Only)
+
+1. Go to the [Releases](https://github.com/voidZiAD/AnghamiRPC/releases) page.
+2. Download the latest release ZIP file.
+3. Extract the contents.
+4. Run the `AnghamiRPC.exe` executable.
 ### GUI Usage
 
 1. Launch the AnghamiRPC application.
 2. Enter your Discord Client ID in the provided textbox.
-3. Click "start".
+3. Click "Login".
 4. Your Discord status will now reflect the currently playing Anghami song.
+
+## Getting Started RPC-Script
+
+### Installation Script
+
+1. Clone the repository to your local machine.
+   `git clone https://github.com/voidZiAD/AnghamiRPC.git`
+2. Open the project in Visual Studio.
+3. Build the solution to restore the NuGet packages.
+4. Run the program.
+
+### Script Usage
+
+1. Open the Anghami desktop app and start playing a song.
+2. Run the AnghamiRPC program.
+3. Your current song will be displayed on your Discord profile.
 
 ### Compatibility
 
 Versions after Console are only compatible on Windows & Linux (Can be run on Linux using Wine App), Versions before GUI Update are compatible on Windows & Mac & Linux.
-
 ## Releases
-
-Check out the [Releases](https://github.com/voidZiAD/AnghamiRPC/releases) page for pre-built executables. Download the latest release ZIP file, extract, and run `AnghamiRPC.exe`.
-
+Check out the [Releases](https://github.com/simplehima/AnghamiRPC/releases) page for pre-built executables. Download the latest release ZIP file, extract, and run `AnghamiRPC.exe`.
 ## Contributions
 
 Created By [@ZiAD](https://github.com/voidZiAD/)
 
-This GUI and Patches By [@simplehima](https://github.com/simplehima/)
+Previous GUI and Patches By [@simplehima](https://github.com/simplehima/)
+
+New GUI by [@ZiAD](https://github.com/voidZiAD/)
 
 ### Troubleshooting
 
 If you encounter any issues or errors, please check the following:
-
 - Ensure that your Discord Client ID is correct.
 - Verify that Anghami is open and installed on your PC.
 - Check for any error messages displayed in the AnghamiRPC application.
-
 If you encounter an issue, you can report it to the **[issues](https://github.com/simplehima/AnghamiRPC/issues)** page, and I may or may not fix it.
-
 ## License
-
 This project is licensed under the [MIT License](LICENSE).
